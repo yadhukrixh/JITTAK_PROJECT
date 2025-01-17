@@ -17,24 +17,30 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [https://jittak-project.vercel.app/](https://jittak-project.vercel.app/) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
 ## Learn More
+This project is part of the evaluation process for the React.js Developer role, where the objective was to convert a Figma design into responsive, fully functional web pages. The following pages were implemented:
 
-To learn more about Next.js, take a look at the following resources:
+Login
+Logout
+Password Reset
+Dashboard
+User List
+## Key Features and Technologies
+- **React.js**: Utilized React.js to build interactive and dynamic user interfaces, ensuring smooth user experiences across different screens.
+- **TypeScript**: The project is developed using TypeScript for type safety and maintainable code.
+- **Responsive Design**: Focused on ensuring the application is fully responsive, adhering to the design principles provided in the Figma file.
+- **State Management**: Implemented state management for each screen, following the flows provided in the Figma prototype.
+- **Authentication**: Integrated a login and logout system using cookies to handle user sessions securely.
+- **Server-Side Data Fetching**: Used Next.js server-side capabilities for API data fetching, ensuring improved performance and SEO compatibility.
+- **Dummy Data Population**: The User List page is populated with dummy data to simulate real-world usage, with full functionality for pagination and filtering.
+- **Vercel Hosting**: The application is deployed on Vercel, ensuring fast and reliable hosting with automatic scaling and optimal performance.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Approach
+The project follows modern best practices for React development, with an emphasis on clean, scalable code. I utilized Next.js for efficient server-side rendering and API data fetching, ensuring fast loading times and a seamless user experience. The login/logout functionality was implemented using cookies, ensuring secure authentication flow. The UI was meticulously converted from Figma designs, ensuring a high-quality visual match with the provided designs. The application has been deployed on Vercel for fast, scalable, and continuous integration, providing an accessible live version of the app.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
->>>>>>> 25df751 (Created a new repository to hoting purpose.)
+>>>>>>> 25df751 (Created a new repository to hosting purpose.)
