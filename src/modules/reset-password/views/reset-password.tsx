@@ -7,14 +7,31 @@ import { validatePassword } from "@/utils/authentication-utils/validation";
 import { delay } from "@/utils/common-utils/utils";
 import UseAuthenticationServices from "@/modules/authentication/services/authentication-services";
 import { message } from "antd";
+import { useRouter } from "next/navigation";
 
+/**
+ * ResetPassword component allows the user to set or reset their password.
+ * It validates the password format, checks if the passwords match, and submits the new password to the backend.
+ *
+ * @returns {JSX.Element} - The rendered reset password form with input fields and submit button.
+ */
 const ResetPassword = () => {
-  const [resetPassword, setResetPassword] = useState<string>();
-  const [confirmPassword, setConfirmPassword] = useState<string>();
-  const [passwordError, setPasswordError] = useState<string>();
-  const [passwordMatch, setPasswordMatch] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(false);
+  // State variables to manage password and form errors
+  const [resetPassword, setResetPassword] = useState<string>(); // Stores the new password entered by the user
+  const [confirmPassword, setConfirmPassword] = useState<string>(); // Stores the confirmation password
+  const [passwordError, setPasswordError] = useState<string>(); // Stores the error message if the password is invalid
+  const [passwordMatch, setPasswordMatch] = useState<boolean>(false); // Boolean to check if passwords match
+  const [loading, setLoading] = useState<boolean>(false); // State to manage loading state during submission
 
+  // Router instance for navigation
+  const router = useRouter();
+
+  /**
+   * Validates the entered password according to the defined rules.
+   * If the password is valid, it clears the error; otherwise, sets an error message.
+   *
+   * @param {string} password - The password to be validated.
+   */
   const handleValidatePassword = (password: string) => {
     if (validatePassword(password)) {
       setPasswordError(undefined);
@@ -25,6 +42,12 @@ const ResetPassword = () => {
     }
   };
 
+  /**
+   * Checks if the entered password and confirmation password match.
+   *
+   * @param {string} password - The new password entered by the user.
+   * @param {string} confirmPassword - The confirmation password entered by the user.
+   */
   const handlePasswordMatch = (password: string, confirmPassword: string) => {
     if (password === confirmPassword) {
       setPasswordMatch(true);
@@ -33,34 +56,45 @@ const ResetPassword = () => {
     }
   };
 
+  // Effect hook to validate the password whenever the resetPassword changes
   useEffect(() => {
     handleValidatePassword(resetPassword!);
   }, [resetPassword]);
 
+  // Effect hook to check if the passwords match whenever the confirmPassword changes
   useEffect(() => {
     handlePasswordMatch(resetPassword!, confirmPassword!);
   }, [confirmPassword]);
 
+  /**
+   * Submits the new password and confirmation password to the backend for processing.
+   * It also handles loading state and displays success or error messages.
+   *
+   * @param {string} resetPassword - The new password entered by the user.
+   * @param {string} confirmPassword - The confirmation password entered by the user.
+   */
   const handleSubmitNewPassword = async (
     resetPassword: string,
     confirmPassword: string
   ) => {
-    setLoading(true);
+    setLoading(true); // Set loading state to true during the submission
     try {
-      await delay(1000);
+      await delay(1000); // Simulate network delay
       const response = await UseAuthenticationServices().handleResetPassword(
         resetPassword,
         confirmPassword
       );
       if (response.status) {
-        message.success(response.message);
+        message.success(response.message).then(() => [
+          router.push('/'), // Redirect to the home page on success
+        ]);
       } else {
-        message.error(response.message);
+        message.error(response.message); // Display error message if submission fails
       }
-      setLoading(false);
+      setLoading(false); // Set loading state to false after the response
     } catch (error) {
-      setLoading(false);
-      console.log(error);
+      setLoading(false); // Set loading state to false in case of an error
+      console.log(error); // Log any errors that occur during submission
     }
   };
 
@@ -124,10 +158,11 @@ const ResetPassword = () => {
   );
 };
 
+// Configure message notifications (position, duration, container)
 message.config({
-  top: '80vh', // Removes the default top margin// Set the bottom margin (adjust as needed)
-  duration: 3, // Duration for the message
-  getContainer: () => document.body, // Ensure it renders on the body
+  top: '80vh', // Position the message at 80% from the top of the screen
+  duration: 3, // Set the duration for the message
+  getContainer: () => document.body, // Render the message on the body
 });
 
 export default ResetPassword;

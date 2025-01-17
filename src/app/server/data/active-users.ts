@@ -1,3 +1,59 @@
+/**
+ * Array of active users.
+ * 
+ * This array contains a list of active users with their details such as nickname, 
+ * email, birth month, gender, location, and registration date. The data can be used 
+ * to display user information in various parts of the application, such as a user 
+ * dashboard, profile page, or notification system.
+ * 
+ * Each user object in the array contains the following properties:
+ * 
+ * @typedef {Object} User
+ * @property {string} key - A unique identifier for the user.
+ * @property {string} nickname - The nickname of the user.
+ * @property {string} email - The email address of the user.
+ * @property {string} birthMonth - The birth month and year of the user.
+ * @property {string} gender - The gender of the user.
+ * @property {string} location - The location (e.g., city, prefecture) of the user.
+ * @property {string} registrationDate - The date the user registered.
+ * 
+ * @example
+ * // Example of a user object
+ * {
+ *   key: "1",
+ *   nickname: "ゆうと",
+ *   email: "example1@example.com",
+ *   birthMonth: "1992年 12月",
+ *   gender: "男性",
+ *   location: "東京都",
+ *   registrationDate: "2024年 01月 12日"
+ * }
+ * 
+ * @example
+ * // Example of the full ActiveUsers array (snippet)
+ * [
+ *   {
+ *     key: "1",
+ *     nickname: "ゆうと",
+ *     email: "example1@example.com",
+ *     birthMonth: "1992年 12月",
+ *     gender: "男性",
+ *     location: "東京都",
+ *     registrationDate: "2024年 01月 12日"
+ *   },
+ *   {
+ *     key: "2",
+ *     nickname: "ニックネーム",
+ *     email: "user234@example.net",
+ *     birthMonth: "1987年 5月",
+ *     gender: "女性",
+ *     location: "東京都",
+ *     registrationDate: "2024年 01月 12日"
+ *   },
+ *   ...
+ * ]
+ */
+
 export const ActiveUsers = [
     {
       key: "1",

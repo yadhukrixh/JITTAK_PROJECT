@@ -5,12 +5,19 @@ import styles from "./user-table.module.scss";
 import { UsersData } from "@/interfaces/dashboard/users";
 import { LoadingOutlined } from "@ant-design/icons";
 
+/**
+ * Props for the UserTable component.
+ *
+ * @interface UserTableProps
+ * @property {boolean} [loading] - Optional flag to show loading state (default is false).
+ * @property {UsersData[]} data - Array of user data to be displayed in the table.
+ */
 interface UserTableProps {
-  loading?: boolean;
-  data: UsersData[];
+  loading?: boolean; // Flag to indicate loading state
+  data: UsersData[]; // Array of user data to populate the table
 }
 
-// Define table columns
+// Define the columns for the table
 const columns = [
   {
     title: "No.",
@@ -81,21 +88,28 @@ const columns = [
   },
 ];
 
+/**
+ * A functional component that renders a table displaying user data.
+ * The table includes various user details such as nickname, email, gender, and more.
+ * 
+ * @param {UserTableProps} props - The props for the component.
+ * @returns {JSX.Element} - The rendered user table.
+ */
 const UserTable: React.FC<UserTableProps> = ({ data, loading = false }) => {
   return (
     <div className="p-6">
       <Table
-        columns={columns}
-        dataSource={data}
-        pagination={{ pageSize: 10 }}
-        bordered={false}
-        rowKey="key"
-        className={styles.customTable}
+        columns={columns} // Table column configuration
+        dataSource={data} // Data to be displayed in the table
+        pagination={{ pageSize: 10 }} // Set pagination size to 10 rows per page
+        bordered={false} // Disable table borders
+        rowKey="key" // Set unique key for each row
+        className={styles.customTable} // Apply custom table styles
         locale={{
-          emptyText: "表示するデータがありません", // Customize your empty message here
+          emptyText: "表示するデータがありません", // Customize empty data message
         }}
         loading={{
-          spinning: loading, // Show loading spinner based on your state
+          spinning: loading, // Show loading spinner based on `loading` state
           indicator: (
             <div className="custom-loading-indicator">
               <Spin
@@ -107,10 +121,9 @@ const UserTable: React.FC<UserTableProps> = ({ data, loading = false }) => {
                 }
               />
             </div>
-          ), // Optional custom loading indicator
-          delay: 500, // Optional delay in ms before showing loading indicator
-          // Use `style` to hide the spinner in the header if needed
-          style: { padding: 20, display:loading? "block":"none" }, // Apply style to control visibility
+          ), // Custom loading indicator component
+          delay: 500, // Optional delay in ms before showing the loading indicator
+          style: { padding: 20, display: loading ? "block" : "none" }, // Control visibility of the loading spinner
         }}
       />
     </div>

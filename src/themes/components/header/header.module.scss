@@ -1,6 +1,7 @@
+// header.module.scss
 .headerWrapper {
     position: fixed;
-    z-index: 500;
+    z-index: 100;
     top: 0;
     left: 0;
     width: 100%;
@@ -16,6 +17,7 @@
 .menuItem {
     display: flex;
     flex-direction: row;
+    align-items: center;
     column-gap: 5px;
     padding: 0px;
     height: 30px;
@@ -32,4 +34,15 @@
     width: 24px;
     height: 24px;
     cursor: pointer;
+}
+
+// Global styles to override Ant Design dropdown
+.dropDown :global{
+    .ant-dropdown {
+        z-index: 9999 !important;
+    }
+    
+    .ant-dropdown-menu {
+        z-index: 9999 !important;
+    }
 }
