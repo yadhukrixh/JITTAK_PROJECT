@@ -19,6 +19,16 @@ bun dev
 
 Open [https://jittak-project.vercel.app/](https://jittak-project.vercel.app/) with your browser to see the result.
 
+You can login with to the app with following credentials
+**User Id / Email**: 'admin.s12345@allright.com',
+**Password**: 'Password1234'
+
+**User Id / Email**: 'user.s12345@allright.com',
+**Password**: 'Password1234'
+
+**User Id / Email**: 'superadmin.s12345@allright.com',
+**Password**: 'Admin1234'
+
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
